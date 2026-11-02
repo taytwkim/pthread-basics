@@ -44,10 +44,10 @@ int main()
         args[i].tid = i;
 
         int error = pthread_create(
-            &threads[i], // pthread_create will write the thread identifier here.
-            NULL,   // can pass in pthread_attr_t object for advanced use.
-            run,    // routine that the thread runs.
-            &args[i]    // pass in arg to the routine.
+            &threads[i], // pthread_create writes the thread identifier here
+            NULL,   // can pass in pthread_attr_t for advanced use
+            run,    // thread routine
+            &args[i]    // arg to the routine
         );
 
         // pthread_create returns 0 if successful.
