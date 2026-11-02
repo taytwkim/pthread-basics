@@ -1,6 +1,8 @@
 # pthread basics
 
-Sample programs to illustrate basic pthread patterns:
+Small programs to demonstrate basic pthread APIs. 
+
+I wrote about pthread [here](https://taytwkim.vercel.app/blog/random/009-pthread/).
 
 * `example1.c`: `pthread_create` and `pthread_join`
 * `example2.c`: `pthread_detach`

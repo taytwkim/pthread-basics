@@ -19,6 +19,7 @@ void *run(void *arg)
     arg_t *a = (arg_t *) arg;
 
     int x = rand() % 10 + 1;
+
     sleep(x);
 
     printf("Thread %d: Ready\n", a->tid);
@@ -33,6 +34,7 @@ void *run(void *arg)
 int main()
 {
     int num_threads = 4;
+    
     int error = pthread_barrier_init(&barrier, NULL, num_threads);
 
     if (error) {

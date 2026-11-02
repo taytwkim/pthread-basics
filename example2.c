@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 // Example 2: Usage of pthread_detach
-// Creates N threads, each thread generates a random number x
+// Creates N threads, each thread generates a random number x,
 // and sleeps for x seconds.
 
 typedef struct thread_arg {
@@ -33,12 +33,12 @@ int main()
     int num_threads = 4;
 
     for (int i = 0; i < num_threads; ++i) {
-        // We only use this thread ID within this iteration's scope,
-        // so a local variable is enough.
+        // We only use pthread_t within this iteration's scope,
+        // so a local variable is fine.
         pthread_t thread;
 
         // Since threads will be detached,
-        // we have to free memory inside the routine.
+        // free memory inside the routine.
         arg_t *arg = calloc(1, sizeof(arg_t));
 
         if (!arg) {
@@ -49,10 +49,10 @@ int main()
         arg->tid = i;
 
         int error = pthread_create(
-            &thread, // pthread_create will write the thread identifier here.
-            NULL,   // can pass in pthread_attr_t object for advanced use.
-            run,    // routine that the thread runs.
-            arg    // pass in arg to the routine.
+            &thread,
+            NULL,
+            run,
+            arg
         );
 
         // pthread_create returns 0 if successful.

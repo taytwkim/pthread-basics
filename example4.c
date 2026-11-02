@@ -4,9 +4,9 @@
 #include <string.h>
 
 // Example 4: Usage of pthread_cond_*
-// Producer and consumer pattern.
-// Producer produces when has_value is 0.
-// Consumer consumes when has_value is 1.
+// Producer and consumer.
+// Producer waits until has_value is 0.
+// Consumer waits until has_value is 1.
 
 int value;
 int has_value;
@@ -43,9 +43,12 @@ void *producer_run(void *arg)
 
         printf("Hello from producer: Produced %d.\n", x);
 
-        // Wake up one thread waiting on this condition variable.
+        // pthread_cond_signal wakes up one thread waiting on this condition variable.
         // With one producer and one consumer, only the other thread can be waiting.
-        // pthread_cond_broadcast wakes up all threads waiting on this condition variable.
+        
+        // Another option is to use pthread_cond_broadcast, which 
+        // wakes up all threads waiting on this condition variable.
+
         // A thread that wakes up still needs to be scheduled and reacquire
         // the mutex before pthread_cond_wait returns.
         pthread_cond_signal(&cond);

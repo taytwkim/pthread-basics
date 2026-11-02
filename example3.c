@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 // Example 3: Usage of pthread_mutex
-// Creates N threads, each thread generates a random number x
+// Creates N threads, each thread generates a random number x,
 // and adds to a lock-protected sum.
 
 int total = 0;
@@ -15,7 +15,6 @@ typedef struct thread_arg {
     int tid;
 } arg_t;
 
-
 void *run(void *arg)
 {
     arg_t *a = (arg_t *) arg;
@@ -24,8 +23,8 @@ void *run(void *arg)
     int x = rand() % 10 + 1;
     sleep(x);
 
-    // Critical section
     pthread_mutex_lock(&mutex);
+    // Critical section
 
     total += x;
     
@@ -38,7 +37,6 @@ void *run(void *arg)
 
     return NULL;
 }
-
 
 int main()
 {

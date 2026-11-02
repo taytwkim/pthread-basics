@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 // Example 1: Usage of pthread_create and pthread_join
-// Creates N threads, each thread generates a random number x
+// Creates N threads, each thread generates a random number x,
 // and sleeps for x seconds before joining the main thread.
 
 typedef struct thread_arg {
@@ -17,7 +17,7 @@ void *run(void *arg)
 {
     arg_t *a = (arg_t *) arg;
 
-    /// rand() isn't guaranteed to be thread-safe, but it is on Linux with glibc.
+    // rand() isn't guaranteed to be thread-safe, but it is on Linux with glibc.
     int x = rand() % 10 + 1;
 
     sleep(x);
