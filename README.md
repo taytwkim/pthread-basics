@@ -9,5 +9,3 @@ I wrote about pthread [here](https://taytwkim.vercel.app/blog/random/009-pthread
 * `example3.c`: `pthread_mutex_*`
 * `example4.c`: `pthread_cond_*`
 * `example5.c`: `pthread_barrier_*`
-
-testing github credentials setup
